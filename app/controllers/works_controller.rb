@@ -1,5 +1,10 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
+  rescue_from CanCan::AccessDenied do |exception|
+    # flash[:error] = "Access denied."
+    # redirect_to root_path
+    redirect_to root_path, :alert => exception.message
+  end
 
   # GET /works
   # GET /works.json

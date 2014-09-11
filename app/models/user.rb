@@ -2,10 +2,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:username]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :authentication_keys => [:username]
 
   validates :username, presence: true
-  validates :username, uniqueness: true, if: -> { self.username.present? }
+  validates :username, uniqueness: true#, if: -> { self.username.present? }
   validates :role, inclusion: { in: %w(member admin), message: "%{value} is not a valid role" }
 
   attr_accessor :login
