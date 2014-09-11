@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
-  has_many :works
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :authentication_keys => [:username]
+         :authentication_keys => [:login]
 
-  validates :username, presence: true
-  validates :username, uniqueness: true#, if: -> { self.username.present? }
+  has_many :works
+  
+  validates :username, presence: true, uniqueness: true
   validates :role, inclusion: { in: %w(member admin), message: "%{value} is not a valid role" }
 
   attr_accessor :login

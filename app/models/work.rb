@@ -4,5 +4,5 @@ class Work < ActiveRecord::Base
 
   validates :title, presence: true
   
-  attr_accessor :username
+  attr_accessor :login
 end
