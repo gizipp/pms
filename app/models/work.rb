@@ -1,6 +1,5 @@
 class Work < ActiveRecord::Base
-  belongs_to :users
-  has_many :contributors, :through => :appointments
+  belongs_to :user
 
   validates :title, presence: true
   

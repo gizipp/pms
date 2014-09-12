@@ -1,20 +1,19 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
-  rescue_from CanCan::AccessDenied do |exception|
-    # flash[:error] = "Access denied."
-    # redirect_to root_path
-    redirect_to root_path, :alert => exception.message
-  end
+  #before_action :authenticate_user!
+  #load_and_authorize_resource
 
   # GET /works
   # GET /works.json
   def index
     @works = Work.all
+    @user = User.all
   end
 
   # GET /works/1
   # GET /works/1.json
   def show
+    @user = User.all
   end
 
   # GET /works/new

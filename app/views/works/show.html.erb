@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @work.user_id %>
+  <strong>Owner:</strong>
+  <%= @work.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
