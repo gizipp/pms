@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
-
   has_many :works
+  has_many :contributed_works, through: :contributor
+  has_many :contributors 
   
   validates :username, presence: true, uniqueness: true
   validates :role, inclusion: { in: %w(member admin), message: "%{value} is not a valid role" }
