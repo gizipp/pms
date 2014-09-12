@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :role, inclusion: { in: %w(member admin), message: "%{value} is not a valid role" }
 
+  ROLES = %w[member admin]
+  
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
