@@ -17,10 +17,10 @@
         <td><%= work.description %></td>
         <td><%= work.user.name %></td>
         <td><%= link_to 'Show', work %></td>
-        <% if can? :update, @work %>
+        <% if can? :update, work %>
           <td><%= link_to 'Edit', edit_work_path(work) %></td>
         <% end %>
-        <% if can? :destroy, @work %>
+        <% if can? :destroy, work %>
           <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>  
       </tr>
