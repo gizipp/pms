@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @works = Work.all.order("created_at").page(params[:page]).per(5)
     @user = User.all
   end
 
