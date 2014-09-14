@@ -10,6 +10,8 @@
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
+    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+    <%= f.input :avatar %>
   </div>
 
   <div class="form-actions">

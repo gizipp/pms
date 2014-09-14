@@ -18,6 +18,8 @@
     <% if can? :update, f %>
       <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
     <% end %>
+    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+    <%= f.input :avatar %>
   </div>
 
   <div class="form-actions">

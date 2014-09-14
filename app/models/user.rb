@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :role, inclusion: { in: %w(member admin), message: "%{value} is not a valid role" }
 
+  mount_uploader :avatar, AvatarUploader
+  
   ROLES = %w[member admin]
   
   def role?(base_role)
