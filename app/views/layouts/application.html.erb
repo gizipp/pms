@@ -42,11 +42,11 @@
       <% if user_signed_in? %>
       <ul class="left">
         <li class="has-dropdown">
-          <a href="#">My Project</a>
+          <%= link_to "My Project", works_path %>
           <ul class="dropdown">
             <li><a href="#">My Cotributions</a></li>
-            <li><a href="#">My Task</a></li>
-            <li><a href="#">My Todo</a></li>
+            <li><%= link_to "My Task", tasks_path %></li>
+            <li><%= link_to "My Todo", todo_lists_path %></li>
           </ul>
         </li>
       </ul>
