@@ -33,6 +33,8 @@ gem 'kaminari'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'foundation-rails'
+gem 'mail'
+gem 'actionmailer'
 
 group :development do
   gem 'sextant'

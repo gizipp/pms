@@ -161,6 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   cancancan
   carrierwave
   coffee-rails (~> 4.0.0)
@@ -169,6 +170,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mail
   mysql2
   rails (= 4.1.5)
   rmagick

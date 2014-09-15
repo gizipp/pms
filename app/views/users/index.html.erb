@@ -1,0 +1,39 @@
+<h1>Manage Project</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th width="200">Project</th>
+      <th>Description</th>
+      <th width="80">Owner</th>
+      <th width="150">Action</th>
+    </tr>
+  </thead>
+    <tbody>
+        <% @works.each do |work| %>
+          <tr>
+            <td><%= link_to work.title, work %>
+
+            </td>
+            <td><%= work.description %></td>
+            <td><%= work.user.username %></td>
+            <td>              
+              <ul class="stack-for-small round secondary button-group">
+                <li>
+                  <% if can? :update, work %>
+                    <%= link_to 'Edit', edit_work_path(work), :class => "tiny button" %>
+                  <% end %>
+                </li>
+                <li>
+                <% if can? :destroy, work %>
+                  <%= link_to 'Delete', work, method: :delete, data: { confirm: 'Are you sure?' }, :class => "tiny button [secondary alert success]" %>
+                <% end %>              
+                </li>
+            </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+</table>
+
+<%= paginate @works %>

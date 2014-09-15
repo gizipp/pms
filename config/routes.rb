@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tasks
+
+  resources :todo_lists
+
   resources :works
 
   devise_for :users
