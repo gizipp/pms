@@ -30,7 +30,8 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
-        UserMailer.notif_task(@task.user_id, @task).deliver
+        #UserMailer.notif_task("gizipp.gizipp@gmail.com", @task).deliver
+        UserMailer.delay.notif_task(@task.user.email, @task)
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
