@@ -12,9 +12,7 @@
     <tbody>
         <% @works.each do |work| %>
           <tr>
-            <td><%= link_to work.title, work %>
-
-            </td>
+            <td><%= link_to work.title, work %></td>
             <td><%= work.description %></td>
             <td><%= work.user.username %></td>
             <td>              
