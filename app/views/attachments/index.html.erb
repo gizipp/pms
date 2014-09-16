@@ -1,7 +1,7 @@
 <div id="attachments">
 <% for attachment in @attachments %>
   <div class="attachment">
-    <%=simple_format attachment.name %>
+    <%=simple_format image_tag(attachment.attachment_url) if attachment.attachment? %>
   </div>
 <% end %>
 </div>
