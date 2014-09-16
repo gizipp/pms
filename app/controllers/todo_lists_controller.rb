@@ -4,7 +4,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = TodoList.all.order("created_at").page(params[:page]).per(5)
   end
 
   # GET /todo_lists/1
