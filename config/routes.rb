@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :works
 
   resources :todo_lists
 
-  resources :works
+  resources :tasks do
+    resources :comments
+  end
 
   devise_for :users
   root to: 'welcome#index'
