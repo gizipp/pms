@@ -1,6 +1,6 @@
 <%= form_for [@attachable, @attachment] do |f| %>
   <div class="field">
-    <%= f.input :name %>
+    <%= f.file_field :attachment %>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>

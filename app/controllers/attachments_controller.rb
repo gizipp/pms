@@ -11,7 +11,7 @@ class AttachmentsController < ApplicationController
 
   def create
     @attachable = find_attachable
-    @attachment = @attachable.attachments.build(params[:attachment])
+    @attachment = @attachable.attachments.new(attach_params)
     if @attachment.save
       flash[:notice] = "Successfully created attachment."
       redirect_to :id => nil
@@ -28,5 +28,10 @@ class AttachmentsController < ApplicationController
       end
     end
     nil
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def attach_params
+    params.require(:attachment).permit(:name, :attachment, :attachable_id, :attachable_type)
   end
 end
