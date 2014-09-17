@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :works
-
-  resources :users
-
+  
   resources :todo_lists
 
   resources :tasks do
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resources :users
   root to: 'welcome#index'
 
   require 'sidekiq/web'

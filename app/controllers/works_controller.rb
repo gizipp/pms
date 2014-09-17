@@ -6,7 +6,11 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all.order("created_at").page(params[:page]).per(5)
+    if current_user.role?("admin")
+      @works = Work.all.order("created_at").page(params[:page]).per(5)
+    else
+      @works = current_user.works.page(params[:page]).per(5)
+    end
     @user = User.all
   end
 

@@ -11,11 +11,13 @@ class TasksController < ApplicationController
     else
       @tasks = current_user.tasks.page(params[:page]).per(5)
     end
+    @user = User.all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @user = User.all
   end
 
   # GET /tasks/new
