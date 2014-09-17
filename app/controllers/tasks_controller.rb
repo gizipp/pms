@@ -6,7 +6,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all.order("created_at").page(params[:page]).per(5)
+    
+    if current_user.role?("admin")
+      @tasks = Task.all.order("created_at").page(params[:page]).per(5)
+    else
+      @tasks = current_user.tasks.page(params[:page]).per(5)
+    end
   end
 
   # GET /tasks/1
@@ -33,7 +38,7 @@ class TasksController < ApplicationController
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
         #UserMailer.notif_task("gizipp.gizipp@gmail.com", @task).deliver
-        UserMailer.delay.notif_task(@task.user.email, @task)
+        #UserMailer.delay.notif_task(@task.user.email, @task)
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }

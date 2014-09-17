@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
   has_many :works
+  has_many :tasks
   has_many :contributed_works, through: :contributor
   has_many :contributors 
   
