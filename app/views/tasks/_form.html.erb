@@ -16,9 +16,6 @@
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-    <%= f.select :user_id, @tasks.user.map{ |c| [c.username, c.id] } %>
-  </div>
-  <div class="field">
     <%= f.label :due_date %><br>
     <%= f.date_select :due_date %>
   </div>
@@ -34,6 +31,6 @@
     <%= f.hidden_field :status, :value => "0" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Task', :class => 'button right' %>
   </div>
 <% end %>
