@@ -6,7 +6,6 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    
     if current_user.role?("admin")
       @tasks = Task.all.order("created_at").page(params[:page]).per(5)
     else
