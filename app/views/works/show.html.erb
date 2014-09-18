@@ -1,21 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Project:</strong>
+<h2>
   <%= @work.title %>
-</p>
+</h2>
 
 <p>
-  <strong>Description:</strong>
   <%= @work.description %>
 </p>
 
 <p>
-  <strong>Owner:</strong>
+  <strong>Project Owner:</strong>
   <%= @work.user.name %>
 </p>
 
+<p>
+  <strong>Project Contributor:</strong>
+  <%= "Contributor1, Contributor2, Contributor3" %>
+</p>
+
+<p>
+  <strong>Todo List:</strong>
+  <%= "Contributor1, Contributor2, Contributor3" %>
+</p>
+
+<div class="form-actions right">
 <% if can? :destroy, @work %>
-<%= link_to 'Edit', edit_work_path(@work) %> | 
-<% end %>
-<%= link_to 'Back', works_path %>
+  <%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
+  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button" %>
+  <%= link_to 'Add Contributor', edit_work_path(@work), :class => "button" %>
+  <% end %>
+</div>
+

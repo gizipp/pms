@@ -10,6 +10,7 @@ class Ability
       can :read, :all
       if user.role?(:member)
         can :manage, Task
+        can :manage, TodoList
         can :create, Work
         can :destroy, Work do |work|
              work.try(:user) == user
