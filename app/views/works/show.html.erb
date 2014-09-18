@@ -15,7 +15,9 @@
 
 <p>
   <strong>Project Contributor:</strong>
-  <%= "Contributor1, Contributor2, Contributor3" %>
+  <% @contributor.each do |contributor| %>
+    <%= contributor.user_id %>
+  <% end %>
 </p>
 
 <p>

@@ -18,6 +18,7 @@ class WorksController < ApplicationController
   # GET /works/1.json
   def show
     @user = User.all
+    @contributor = Contributor.where(work_id: params[:id]).order('created_at DESC')
   end
 
   # GET /works/new
@@ -77,6 +78,6 @@ class WorksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
-      params.require(:work).permit(:title, :description, :user_id)
+      params.require(:work).permit(:title, :description, :user_id )
     end
 end

@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Project</th>
-      <th colspan="2">Contributors</th>
+      <th>Contributors</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -13,6 +14,11 @@
       <tr>
         <td><%= contributor.work_id %></td>
         <td><%= contributor.user_id %></td>
+        <% if can? :destroy, contributor %>
+        <td>
+          <%= link_to 'Delete', work_contributor_path(contributor.work_id, contributor), data: { confirm: 'Are you sure?' }, :class => "tiny button [secondary alert success]" %>
+        </td>
+        <% end %>   
       </tr>
     <% end %>
   </tbody>
