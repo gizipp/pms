@@ -9,6 +9,7 @@ class Ability
     else
       can :read, :all
       if user.role?(:member)
+        can :manage, Contributor
         can :manage, Task
         can :manage, TodoList
         can :create, Work

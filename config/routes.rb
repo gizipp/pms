@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :works
-  
+  resources :works do
+    resources :contributors
+  end
+
   resources :todo_lists
 
   resources :tasks do

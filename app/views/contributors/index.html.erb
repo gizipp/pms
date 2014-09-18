@@ -1,0 +1,21 @@
+<h1>Manage Contributions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th colspan="2">Contributors</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contributors.each do |contributor| %>
+      <tr>
+        <td><%= contributor.work_id %></td>
+        <td><%= contributor.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

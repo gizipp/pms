@@ -1,0 +1,12 @@
+<%= form_for [@work, Contributor.new] do |f| %>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :work_id, value: "1" %> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

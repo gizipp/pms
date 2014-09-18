@@ -27,7 +27,7 @@
 <% if can? :destroy, @work %>
   <%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
   <%= link_to 'Add Todo List', new_todo_list_path, :class => "button" %>
-  <%= link_to 'Add Contributor', edit_work_path(@work), :class => "button" %>
+  <%= link_to 'Add Contributor', new_work_contributor_path(@work), :class => "button" %>
   <% end %>
 </div>
 
