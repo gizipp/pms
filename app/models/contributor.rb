@@ -1,3 +1,4 @@
 class Contributor < ActiveRecord::Base
-  belongs_to :works
+  belongs_to :work
+  belongs_to :user
 end

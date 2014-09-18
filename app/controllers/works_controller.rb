@@ -19,6 +19,7 @@ class WorksController < ApplicationController
   def show
     @user = User.all
     @contributor = Contributor.where(work_id: params[:id]).order('created_at DESC')
+    @todo_list = TodoList.where(work_id: params[:id]).order('created_at DESC')
   end
 
   # GET /works/new

@@ -15,21 +15,27 @@
 
 <p>
   <strong>Project Contributor:</strong>
+  <ul class="disc">
   <% @contributor.each do |contributor| %>
-    <%= contributor.user_id %>
+    <li><%= link_to contributor.user.name, user_path(contributor.user_id) %></li>
   <% end %>
+  </ul>
 </p>
 
 <p>
   <strong>Todo List:</strong>
-  <%= "Contributor1, Contributor2, Contributor3" %>
+  <ul class="disc">
+  <% @todo_list.each do |todo| %>
+    <li><%= todo.name %></li>
+  <% end %>
+  </ul>
 </p>
 
 <div class="form-actions right">
 <% if can? :destroy, @work %>
-  <%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
-  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button" %>
-  <%= link_to 'Add Contributor', new_work_contributor_path(@work), :class => "button" %>
+  <%= link_to 'Edit Project', edit_work_path(@work), :class => "button small" %>
+  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button small" %>
+  <%= link_to 'Add Contributor', new_work_contributor_path(@work), :class => "button small" %>
   <% end %>
 </div>
 

@@ -4,9 +4,9 @@
     <%= f.text_field :user_id %>
   </div>
   <div class="field">
-    <%= f.hidden_field :work_id, value: "1" %> 
+    <%= f.hidden_field :work_id, value: params[:work_id] %> 
   </div>
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", :class => "button right" %>
   </div>
 <% end %>
