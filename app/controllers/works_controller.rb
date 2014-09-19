@@ -18,7 +18,7 @@ class WorksController < ApplicationController
   # GET /works/1.json
   def show
     @contributor = Contributor.where(work_id: params[:id]).order('created_at')
-    @todo_list = TodoList.where(work_id: params[:id]).order('created_at DESC')
+    @todo_list = TodoList.where(work_id: params[:id]).order('created_at')
     
     # Select the user who not contribute
     @u = User.all
@@ -33,6 +33,7 @@ class WorksController < ApplicationController
 
   # GET /works/1/edit
   def edit
+    @work = Work.new
   end
 
   # POST /works

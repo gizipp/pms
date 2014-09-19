@@ -15,6 +15,30 @@
 
 <%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
 
+<h3>Todo List:</h3>
+<ul class="disc">
+<% @todo_list.each do |todo| %>
+  <li><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %> [7/11 task resolved] </li>
+<% end %>
+</ul>
+
+<%= form_for [@work, TodoList.new] do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :work_id, value: params[:id] %> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Todo List", :class => "button" %>
+  </div>
+<% end %>
+
 <h3>Project Contributor:</h3>
 <ul class="disc">
 <% @contributor.each do |contributor| %>
@@ -34,15 +58,4 @@
   <div class="actions">
     <%= f.submit "Add Contributor", :class => "button" %>
   </div>
-<% end %>
-
-<h3>Todo List:</h3>
-<ul class="disc">
-<% @todo_list.each do |todo| %>
-  <li><%= link_to todo.name, todo_list_path(todo.id) %></li>
-<% end %>
-</ul>
-
-<% if can? :destroy, @work %>
-  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button" %>
 <% end %>
