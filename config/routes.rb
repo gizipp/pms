@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :works do
     resources :contributors
+    resources :todo_lists
   end
-
-  resources :todo_lists
 
   resources :tasks do
     resources :comments do
