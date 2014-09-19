@@ -15,6 +15,7 @@ class ContributorsController < ApplicationController
   def new
     @contributor = Contributor.new
     @work = Work.find(params[:work_id])
+    @user = User.all
   end
 
   def create

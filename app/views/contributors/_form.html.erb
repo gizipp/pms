@@ -1,7 +1,6 @@
 <%= form_for [@work, Contributor.new] do |f| %>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.select(:user_id, @user.map { |u| [u.username, u.id] }) %>
   </div>
   <div class="field">
     <%= f.hidden_field :work_id, value: params[:work_id] %> 
