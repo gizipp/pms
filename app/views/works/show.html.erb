@@ -5,39 +5,44 @@
 </h2>
 
 <p>
-  <%= @work.description %>
-</p>
-
-<p>
   <strong>Project Owner:</strong>
   <%= @work.user.name %>
 </p>
 
 <p>
-  <strong>Project Contributor:</strong>
-  <ul class="disc">
-  <% @contributor.each do |contributor| %>
-    <li><%= link_to contributor.user.name, user_path(contributor.user_id) %> | 
-<%= link_to 'Delete', work_contributor_path(contributor.work_id, contributor.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-  </ul>
+  <%= @work.description %>
 </p>
 
-<p>
-  <strong>Todo List:</strong>
-  <ul class="disc">
-  <% @todo_list.each do |todo| %>
-    <li><%= link_to todo.name, todo_list_path(todo.id) %></li>
-  <% end %>
-  </ul>
-</p>
+<%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
 
-<div class="form-actions right">
+<h3>Project Contributor:</h3>
+<ul class="disc">
+<% @contributor.each do |contributor| %>
+  <li><%= link_to contributor.user.name, user_path(contributor.user_id) %> | 
+    <%= link_to 'Delete', work_contributor_path(contributor.work_id, contributor.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+</ul>
+
+<%= form_for [@work, Contributor.new] do |f| %>
+  <div class="field">
+    <%= f.select(:user_id, @user.map { |u| [u.username, u.id] }) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :work_id, value: params[:id] %> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Contributor", :class => "button" %>
+  </div>
+<% end %>
+
+<h3>Todo List:</h3>
+<ul class="disc">
+<% @todo_list.each do |todo| %>
+  <li><%= link_to todo.name, todo_list_path(todo.id) %></li>
+<% end %>
+</ul>
+
 <% if can? :destroy, @work %>
-  <%= link_to 'Edit Project', edit_work_path(@work), :class => "button small" %>
-  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button small" %>
-  <%= link_to 'Add Contributor', new_work_contributor_path(@work), :class => "button small" %>
-  <% end %>
-</div>
-
+  <%= link_to 'Add Todo List', new_todo_list_path, :class => "button" %>
+<% end %>

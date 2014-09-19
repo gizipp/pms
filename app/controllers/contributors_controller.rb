@@ -20,11 +20,12 @@ class ContributorsController < ApplicationController
 
   def create
     @contributor = Contributor.new(contributor_params)
-
+    @work = Work.find(params[:work_id])
+    @user = User.all
     respond_to do |format|
       if @contributor.save
-        format.html { redirect_to  works_path, notice: 'Contributor was successfully created.' }
-        format.json { render :show, status: :created, location:  works_path }
+        format.html { redirect_to :back, notice: 'Contributor was successfully created.' }
+        format.json { render :show, status: :created, location: :back }
       else
         format.html { render :new }
         format.json { render json: @work.errors, status: :unprocessable_entity }

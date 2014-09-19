@@ -1,4 +1,4 @@
-<%= form_for [@work, @contributor] do |f| %>
+<%= form_for [@work, Contributor.new] do |f| %>
   <div class="field">
     <%= f.select(:user_id, @user.map { |u| [u.username, u.id] }) %>
   </div>

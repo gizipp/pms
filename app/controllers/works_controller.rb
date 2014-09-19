@@ -17,9 +17,13 @@ class WorksController < ApplicationController
   # GET /works/1
   # GET /works/1.json
   def show
-    @user = User.all
-    @contributor = Contributor.where(work_id: params[:id]).order('created_at DESC')
+    @contributor = Contributor.where(work_id: params[:id]).order('created_at')
     @todo_list = TodoList.where(work_id: params[:id]).order('created_at DESC')
+    
+    # Select the user who not contribute
+    @u = User.all
+    @ids = @contributor.map{|x| x.user_id}
+    @user = @u.reject{|x| @ids.include? x.id}
   end
 
   # GET /works/new
