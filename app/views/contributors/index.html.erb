@@ -13,7 +13,7 @@
     <% @contributors.each do |contributor| %>
       <tr>
         <td><%= contributor.work_id %></td>
-        <td><%= contributor.user_id %></td>
+        <td><%= contributor.user.username %></td>
         <% if can? :destroy, contributor %>
         <td>
           <%= link_to 'Delete', work_contributor_path(contributor.work_id, contributor), data: { confirm: 'Are you sure?' }, :class => "tiny button [secondary alert success]" %>

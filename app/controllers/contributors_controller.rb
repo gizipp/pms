@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-  before_action :set_contributor, only: [:show, :edit, :destroy]
+  before_action :set_contributor, only: [:show, :edit, :create, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -23,8 +23,8 @@ class ContributorsController < ApplicationController
 
     respond_to do |format|
       if @contributor.save
-        format.html { redirect_to work_contributors_path, notice: 'Contributor was successfully created.' }
-        format.json { render :show, status: :created, location: work_contributors_path }
+        format.html { redirect_to  works_path, notice: 'Contributor was successfully created.' }
+        format.json { render :show, status: :created, location:  works_path }
       else
         format.html { render :new }
         format.json { render json: @work.errors, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ class ContributorsController < ApplicationController
   def destroy
     @contributor.destroy
     respond_to do |format|
-      format.html { redirect_to work_path, notice: 'Contributor was successfully deleted.' }
+      format.html { redirect_to :back, notice: 'Contributor was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -43,7 +43,7 @@ class ContributorsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_contributor
-    @contributor = Contributor.find(params[:id])
+    # @contributor = Contributor.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
