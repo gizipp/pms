@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   resources :works do
     resources :contributors
-    resources :todo_lists
-  end
-
-  resources :tasks do
-    resources :comments do
-      resources :attachments
+    resources :todo_lists do
+      resources :tasks do
+        resources :comments do
+          resources :attachments
+          end
+        resources :attachments
+      end
     end
-    resources :attachments
   end
 
   devise_for :users
