@@ -33,7 +33,6 @@ class WorksController < ApplicationController
 
   # GET /works/1/edit
   def edit
-    @work = Work.new
   end
 
   # POST /works

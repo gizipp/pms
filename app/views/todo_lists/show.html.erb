@@ -7,3 +7,5 @@
 <p>
   <%= @todo_list.description %>
 </p>
+
+<%= link_to 'Edit Project',  edit_work_todo_list_path(params[:work_id], @todo_list), :class => "button" %>

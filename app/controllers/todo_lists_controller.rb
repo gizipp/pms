@@ -20,7 +20,8 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists/1/edit
   def edit
-    @work = Work.new
+    @todo_list = TodoList.find(params[:id])
+    @work = Work.find(params[:work_id])
   end
 
   # POST /todo_lists
@@ -44,8 +45,8 @@ class TodoListsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_list.update(todo_list_params)
-        format.html { redirect_to :back, notice: 'Todo list was successfully updated.' }
-        format.json { render :show, status: :ok, location: :back }
+        format.html { redirect_to  work_todo_list_path, notice: 'Todo list was successfully updated.' }
+        format.json { render :show, status: :ok, location: work_todo_list_path }
       else
         format.html { render :edit }
         format.json { render json: @todo_list.errors, status: :unprocessable_entity }
