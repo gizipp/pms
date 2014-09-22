@@ -1,29 +1,20 @@
-<h1>My Task</h1>
+<h1>Task Assigned To You</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Task</th>
       <th>Due date</th>
-      <th>Name</th>
       <th>Description</th>
-      <th colspan="2">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.user_id %></td>
+        <td><%= link_to task.name, work_todo_list_task_path(task.todo_list.work_id, task.todo_list_id, task.id) %></td>
         <td><%= task.due_date %></td>
-        <td><%= link_to task.name, task %></td>
         <td><%= task.description %></td>
-        <% if can? :update, task %>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <% end %>
-        <% if can? :destroy, task %>
-        <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +23,3 @@
 <br>
 
 <%= paginate @tasks %>
-
-<%= link_to 'New Task', new_task_path %>

@@ -13,6 +13,7 @@ class Ability
         can :manage, Task
         can :manage, TodoList
         can :create, Comment
+        can :create, Attachment
         can :create, Work
         can :destroy, Work do |work|
              work.try(:user) == user
