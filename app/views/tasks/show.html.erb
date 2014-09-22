@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h2>
+  <%= @task.name %>
+</h2>
+
 <p>
-  <strong>User:</strong>
-  <%= @task.user_id %>
+  <%= @task.description %>
 </p>
 
 <p>
@@ -10,41 +13,27 @@
   <%= @task.due_date %>
 </p>
 
+
 <p>
-  <strong>Name:</strong>
-  <%= @task.name %>
+  <strong>Assigned to:</strong>
+  <%= @task.user.username %>
 </p>
 
 <h2>Comments</h2>
 <% @task.comments.each do |comment| %>
   <p>
-    <strong><%= comment.id_user %>:</strong>
+    <strong><%= comment.user.username %>:</strong>
     <%= comment.body %>
   </p>
 <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
-
 <h2>Add a comment:</h2>
-<%= form_for([@task, @task.comments.build]) do |f| %>
-  <p>
-    <%= f.label :id_user %><br>
-    <%= f.text_field :id_user %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
+<%= form_for [@work, @todo_list, @task, @task.comments.build] do |f| %>
   <div class="field">
-    <%= f.file_field :attachment %>
+    <%= f.hidden_field :user_id, value: current_user.id %> 
+    <%= f.text_area :body %>
   </div>
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="actions">
+    <%= f.submit 'Submit', :class => 'button right' %> 
+  </div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922012454) do
+ActiveRecord::Schema.define(version: 20140922031455) do
 
   create_table "attachments", force: true do |t|
     t.integer  "attachable_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140922012454) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer  "id_user"
+    t.integer  "user_id"
     t.text     "body"
     t.integer  "task_id"
     t.datetime "created_at"

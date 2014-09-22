@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :authentication_keys => [:login]
   has_many :works
   has_many :tasks
+  has_many :comments
   has_many :contributed_works, through: :contributor
   has_many :contributors 
   

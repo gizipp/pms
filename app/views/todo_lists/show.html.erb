@@ -13,6 +13,6 @@
 <h3>Task:</h3>
 <ul class="disc">
 <% @task.each do |task| %>
-  <li><%= task.name %> </li>
+  <li><%= link_to task.name, work_todo_list_task_path(params[:work_id], params[:id], task.id) %> </li>
 <% end %>
 </ul>

@@ -10,15 +10,15 @@ class CommentsController < ApplicationController
   def create
     @task = Task.find(params[:task_id])
     @comment = @task.comments.create(comment_params)
-    if @comment
-      @attachable = Attachment.create(attach_params)
-    end
-    redirect_to task_path(@task)
+    # if @comment
+    #   @attachable = Attachment.create(attach_params)
+    # end
+    redirect_to :back
   end
  
   private
     def comment_params
-      params.require(:comment).permit(:id_user, :body)
+      params.require(:comment).permit(:user_id, :body)
     end
     
     def attach_params

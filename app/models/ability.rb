@@ -12,6 +12,7 @@ class Ability
         can :manage, Contributor
         can :manage, Task
         can :manage, TodoList
+        can :create, Comment
         can :create, Work
         can :destroy, Work do |work|
              work.try(:user) == user

@@ -17,6 +17,9 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @work = Work.find(params[:work_id])
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @task = Task.find(params[:id])
     @user = User.all
   end
 
