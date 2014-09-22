@@ -9,3 +9,10 @@
 </p>
 
 <%= link_to 'Edit Project',  edit_work_todo_list_path(params[:work_id], @todo_list), :class => "button" %>
+
+<h3>Task:</h3>
+<ul class="disc">
+<% @task.each do |task| %>
+  <li><%= task.name %> </li>
+<% end %>
+</ul>

@@ -12,6 +12,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
+    @task = Task.where(todo_list_id: params[:id]).order('created_at')
   end
 
   # GET /todo_lists/new
