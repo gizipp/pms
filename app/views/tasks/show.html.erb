@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  TASK : <%= @task.name %>
+  <%= @task.name %>
 </h2>
 
 <p>
   <%= @task.description %>
-  <%= @work.id %>
-
 </p>
 
 <p>
@@ -16,11 +14,21 @@
 </p>
 
 <p>
-  <strong>Assigned to:</strong>
-  <%= @task.user.username %>
+  <strong>Project:</strong>
+  <%= link_to @work.title, work_path(@work.id) %>
 </p>
 
-<h2>Comments</h2>
+<p>
+  <strong>Todo List:</strong>
+  <%= link_to @todo_list.name, work_todo_list_path(@work.id, @todo_list.id) %>
+</p>
+
+<p>
+  <strong>Assigned to:</strong>
+  <%= link_to @task.user.username, user_path(@task.user.id) %>
+</p>
+
+<h2>Discussion</h2>
 <% @task.comments.each do |comment| %>
   <p>
     <strong><%= comment.user.username %>:</strong>
@@ -28,7 +36,6 @@
   </p>
 <% end %>
 
-<h2>Add a comment:</h2>
 <%= form_for [@work, @todo_list, @task, @task.comments.build] do |f| %>
   <div class="field">
     <%= f.hidden_field :user_id, value: current_user.id %> 

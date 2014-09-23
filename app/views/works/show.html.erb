@@ -18,7 +18,7 @@
 <h3>Todo List:</h3>
 <ul class="disc">
 <% @todo_list.each do |todo| %>
-  <li><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %> [7/11 task resolved] </li>
+  <li><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %></li>
 <% end %>
 </ul>
 
