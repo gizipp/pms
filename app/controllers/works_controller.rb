@@ -20,8 +20,8 @@ class WorksController < ApplicationController
     @contributor = Contributor.where(work_id: params[:id]).order('created_at')
     @todo_list = TodoList.where(work_id: params[:id]).order('created_at')
     
-    # Select the user who not contribute
-    @u = User.all
+    # Select the user who not already assigned as contributor
+    @u = User.all.where.not(id: current_user.id)
     @ids = @contributor.map{|x| x.user_id}
     @user = @u.reject{|x| @ids.include? x.id}
   end
