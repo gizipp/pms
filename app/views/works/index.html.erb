@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th width="200">Project</th>
-      <th width="80">Owner</th>
       <th width="150">Action</th>
     </tr>
   </thead>
@@ -12,10 +11,8 @@
         <% @works.each do |work| %>
           <tr>
             <td><%= link_to work.title, work %></td>
-            <td><%= link_to work.user.username, user_path(work.user.id) %></td>
             <td>              
               <ul class="stack-for-small secondary button-group">
-                <li><%= link_to 'Add Task', new_task_path, :class => "tiny button" %></li>
                 <li>
                   <% if can? :update, work %>
                     <%= link_to 'Edit', edit_work_path(work), :class => "tiny button" %>

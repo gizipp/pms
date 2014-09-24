@@ -15,12 +15,45 @@
 
 <%= link_to 'Edit Project', edit_work_path(@work), :class => "button" %>
 
-<h3>Todo List:</h3>
-<ul class="disc">
-<% @todo_list.each do |todo| %>
-  <li><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %></li>
+<p>
+<strong>Project Contributor:</strong>
+  <% @contributor.each do |contributor| %>
+    <%= link_to contributor.user.name, user_path(contributor.user_id) %>
+    <%= link_to 'X', work_contributor_path(contributor.work_id, contributor.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>
+
+<%= form_for [@work, Contributor.new] do |f| %>
+  <div class="field col6">
+    <%= f.select(:user_id, @user.map { |u| [u.username, u.id] }) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :work_id, value: params[:id] %> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Contributor", :class => "button" %>
+  </div>
 <% end %>
-</ul>
+
+<h3>Todo:</h3>
+<table>
+  <thead>
+      <th>Todo</th>
+      <th>Task On Progress</th>
+      <th>Task Completed</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_list.each do |todo| %>
+      <tr>
+        <td><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %></td>
+        <td>12 Task</td>
+        <td>9 Task</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= form_for [@work, TodoList.new] do |f| %>
   <div class="field">
@@ -35,27 +68,6 @@
     <%= f.hidden_field :work_id, value: params[:id] %> 
   </div>
   <div class="actions">
-    <%= f.submit "Add Todo List", :class => "button" %>
-  </div>
-<% end %>
-
-<h3>Project Contributor:</h3>
-<ul class="disc">
-<% @contributor.each do |contributor| %>
-  <li><%= link_to contributor.user.name, user_path(contributor.user_id) %> | 
-    <%= link_to 'Delete', work_contributor_path(contributor.work_id, contributor.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </li>
-<% end %>
-</ul>
-
-<%= form_for [@work, Contributor.new] do |f| %>
-  <div class="field">
-    <%= f.select(:user_id, @user.map { |u| [u.username, u.id] }) %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :work_id, value: params[:id] %> 
-  </div>
-  <div class="actions">
-    <%= f.submit "Add Contributor", :class => "button" %>
+    <%= f.submit "Add Todo", :class => "button" %>
   </div>
 <% end %>

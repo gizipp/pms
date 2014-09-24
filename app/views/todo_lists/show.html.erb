@@ -35,4 +35,4 @@
 
 <%= paginate @task %>
 
-<%= link_to 'New Task', new_task_path, :class => "button" %>
+<%= link_to 'New Task', new_work_todo_list_task_path(params[:work_id], params[:id]), :class => "button" %>
