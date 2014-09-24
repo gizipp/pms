@@ -48,8 +48,8 @@
     <% @todo_list.each do |todo| %>
       <tr>
         <td><%= link_to todo.name, work_todo_list_path(todo.work.id, todo.id) %></td>
-        <td>12 Task</td>
-        <td>9 Task</td>
+        <td><%= todo.tasks.where(:status => false).count %></td>
+        <td><%= todo.tasks.where(:status => true).count %></td>
       </tr>
     <% end %>
   </tbody>
