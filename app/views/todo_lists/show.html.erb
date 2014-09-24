@@ -15,6 +15,7 @@
   <thead>
     <tr>
       <th>Task</th>
+      <th>Assign to</th>
       <th>Due date</th>
       <th>Status</th>
     </tr>
@@ -24,11 +25,14 @@
     <% @task.each do |task| %>
       <tr>
         <td><%= link_to task.name, work_todo_list_task_path(params[:work_id], params[:id], task.id) %></td>
-        <td><%= task.due_date %></td>
+        <td><%= link_to task.user.username, user_path(task.user_id) %></td>
+        <td><%= task.due_date.to_s + ' left' %></td>
         <td><%= task.status ? "On Progress" : "Completed" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Task', new_task_path, :class => "button right" %>
+<%= paginate @task %>
+
+<%= link_to 'New Task', new_task_path, :class => "button" %>

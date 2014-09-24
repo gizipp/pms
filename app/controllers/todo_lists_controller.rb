@@ -12,7 +12,22 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
-    @task = Task.where(todo_list_id: params[:id]).order('status DESC').order('due_date')
+    @task = Task.where(todo_list_id: params[:id]).order('status DESC').order('due_date').page(params[:page]).per(5)
+    @task.each do |t| 
+      diff = (t.due_date - Date.today).to_i
+      t.due_date = convert_due_date(diff)
+     end
+  end
+
+  def convert_due_date(num)
+    if num < 0
+      num = 0
+    elsif num == 0
+      num = 1
+    else 
+      num = num
+    end
+    return num
   end
 
   # GET /todo_lists/new
