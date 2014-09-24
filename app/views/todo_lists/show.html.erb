@@ -8,11 +8,27 @@
   <%= @todo_list.description %>
 </p>
 
-<%= link_to 'Edit Project',  edit_work_todo_list_path(params[:work_id], @todo_list), :class => "button" %>
+<%= link_to 'Edit Todo List',  edit_work_todo_list_path(params[:work_id], @todo_list), :class => "button" %>
 
-<h3>Task:</h3>
-<ul class="disc">
-<% @task.each do |task| %>
-  <li><%= link_to task.name, work_todo_list_task_path(params[:work_id], params[:id], task.id) %> </li>
-<% end %>
-</ul>
+<h3>Related Task:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Due date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task.each do |task| %>
+      <tr>
+        <td><%= link_to task.name, work_todo_list_task_path(params[:work_id], params[:id], task.id) %></td>
+        <td><%= task.due_date %></td>
+        <td><%= task.status ? "On Progress" : "Completed" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Task', new_task_path, :class => "button right" %>
