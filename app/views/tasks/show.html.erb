@@ -5,27 +5,18 @@
 </h2>
 
 <p>
-  <%= @task.description %>
-</p>
-
-<p>
-  <strong>Due date:</strong>
-  <%= @task.due_date %>
+  <%= @task.description %><br>
 </p>
 
 <p>
   <strong>Project:</strong>
-  <%= link_to @work.title, work_path(@work.id) %>
-</p>
-
-<p>
-  <strong>Todo List:</strong>
-  <%= link_to @todo_list.name, work_todo_list_path(@work.id, @todo_list.id) %>
-</p>
-
-<p>
+  <%= link_to @work.title, work_path(@work.id), :class => "label" %>
+  <strong>Filled under to list:</strong>
+  <%= link_to @todo_list.name, work_todo_list_path(@work.id, @todo_list.id), :class => "label" %>
   <strong>Assigned to:</strong>
-  <%= link_to @task.user.username, user_path(@task.user.id) %>
+  <%= link_to @task.user.username, user_path(@task.user.id), :class => "label" %>
+  <strong>Due date:</strong>
+  <span class="label" ><%= @task.due_date %></span>
 </p>
 
 <h2>Discussion</h2>

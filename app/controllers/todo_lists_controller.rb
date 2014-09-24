@@ -20,14 +20,15 @@ class TodoListsController < ApplicationController
   end
 
   def convert_due_date(num)
+    # raise num.to_yaml
     if num < 0
-      num = 0
+      return "jkhjkh"
     elsif num == 0
-      num = 1
+      return "jkhjkh"
     else 
-      num = num
+      num = "ss"
     end
-    return num
+    # return "ddsd"
   end
 
   # GET /todo_lists/new
