@@ -45,7 +45,8 @@ gem 'simple_form'
 gem 'foundation-rails'
 gem 'mail'
 gem 'actionmailer'
-gem 'fabrication'
+#gem 'rspec'
+#gem 'fabrication'
 gem 'faker'
 
 # Use ActiveModel has_secure_password
