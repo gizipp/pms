@@ -6,7 +6,9 @@ gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'mysql2'
+  gem 'sextant'
 end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -43,10 +45,9 @@ gem 'simple_form'
 gem 'foundation-rails'
 gem 'mail'
 gem 'actionmailer'
+gem 'fabrication'
+gem 'faker'
 
-group :development do
-  gem 'sextant'
-end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
