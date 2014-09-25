@@ -14,7 +14,7 @@ require 'faker'
   user.username = Faker::Internet.user_name
   user.email = Faker::Internet.safe_email
   user.role = "member"
-  user.password = "test"
-  user.password_confirmation = "test"
+  user.password = "12345678"
+  user.password_confirmation = "12345678"
   user.save
 end
