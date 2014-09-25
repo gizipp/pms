@@ -16,5 +16,20 @@
 </p>
 
 <p>
+  <strong>Project created:</strong>
+  <%= @user.works.count %>
+</p>
+
+<p>
+  <strong>On Progress Task:</strong>
+  <%= @user.tasks.where(:status => false).count %>
+</p>
+
+<p>
+  <strong>Completed Task:</strong>
+  <%= @user.tasks.where(:status => true).count %>
+</p>
+
+<p>
   <%= image_tag(@user.avatar_url) if @user.avatar? %>
 </p>
