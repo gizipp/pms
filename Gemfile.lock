@@ -54,7 +54,6 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
-    fabrication (2.11.3)
     faker (1.4.3)
       i18n (~> 0.5)
     foundation-rails (5.4.3.1)
@@ -181,7 +180,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
-  fabrication
   faker
   foundation-rails
   jbuilder (~> 2.0)
