@@ -8,7 +8,7 @@
 
 require 'faker'
 
-30.times do
+10.times do
   user = User.new
   user.name = Faker::Name.name
   user.username = Faker::Internet.user_name
@@ -18,3 +18,13 @@ require 'faker'
   user.password_confirmation = "12345678"
   user.save
 end
+
+30.times do
+  task = Task.new
+  task.title = Faker::Name.title
+  task.description = Faker::Lorem.paragraph(2)
+  task.user_id = Faker::Number.number(1)
+  task.save
+end
+
+
