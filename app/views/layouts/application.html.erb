@@ -45,8 +45,7 @@
           <%= link_to "My Project", works_path %>
           <ul class="dropdown">
             <li><a href="#">My Contribution</a></li>
-            <li><a href="#">My Task</a></li>
-            <li></li>
+            <li><%= link_to "My Task", work_todo_list_tasks_path(1,1) %></li>
           </ul>
         </li>
       </ul>
