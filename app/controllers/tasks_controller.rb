@@ -25,6 +25,9 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @work = Work.find(params[:work_id])
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @user = User.all
   end
 
   # GET /tasks/1/edit
@@ -81,6 +84,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:user_id, :due_date, :name, :description, :status)
+      params.require(:task).permit(:user_id, :due_date, :name, :description, :status, :todo_list_id)
     end
 end
