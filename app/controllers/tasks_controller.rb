@@ -38,13 +38,14 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @user = User.find(@task.user_id)
 
     respond_to do |format|
       if @task.save
         format.html { redirect_to :back, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: :back }
-        #UserMailer.notif_task("gizipp.gizipp@gmail.com", @task).deliver
-        #UserMailer.delay.notif_task(@task.user.email, @task)
+        UserMailer.notif_task(@user.email, @task).deliver
+        # UserMailer.delay.notif_task(@task.user.email, @task)
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
