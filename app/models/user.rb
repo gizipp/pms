@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   after_create :send_admin_mail
 
   def send_admin_mail
-    UserMailer.welcome_email(self).deliver
+    UserMailer.delay.welcome_email(self)
   end
 
   ROLES = %w[member admin]
