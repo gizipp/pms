@@ -5,7 +5,8 @@
     <tr>
       <th>Task</th>
       <th>Due date</th>
-      <th>Description</th>
+      <th>Status</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -14,7 +15,8 @@
       <tr>
         <td><%= link_to task.name, work_todo_list_task_path(task.todo_list.work_id, task.todo_list_id, task.id) %></td>
         <td><%= task.due_date %></td>
-        <td><%= task.description %></td>
+        <td><%= task.status ? "Unresolved" : "Done" %></td>
+        <td><%= link_to 'Mark as Done', work_todo_list_task_path(task.todo_list.work_id, task.todo_list_id, task.id),{:method => :put, :status => true} %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :works do
     resources :contributors
     resources :todo_lists do
-      resources :tasks, :has_many => :attachments do
-        resources :comments, :has_many => :attachments do
+      resources :tasks do
+        resources :comments do
           resources :attachments
         end
         resources :attachments
