@@ -1,10 +1,10 @@
 class UserMailer < ActionMailer::Base
   default from: "no-reply@softwareseni.com"
 
-  def notif_task(toemail, task)
-    @toemail = toemail
+  def notif_task(user, task)
+    @user = user
     @task = task
-    mail(to: @toemail, subject: 'New task assigned to you!')
+    mail(to: @user.email, subject: 'New task assigned to you!')
   end
 
   def welcome_email(user)

@@ -4,9 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hello!</h1>
+    <h1>Hello <%= @user.name %>!</h1>
     <p>
-      You have new task assigned to you!
+      You have new task assigned to you!<br>
+      Task : <%= @task.name %><br>
+      Due Data : <%= @task.due_date %><br>
+      Login to your dashboard and see the detail of your task.
     </p>
     <p>Thanks!</p>
   </body>
