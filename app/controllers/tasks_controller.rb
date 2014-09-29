@@ -21,6 +21,9 @@ class TasksController < ApplicationController
     @todo_list = TodoList.find(params[:todo_list_id])
     @task = Task.find(params[:id])
     @user = User.all
+
+    @attachable = Task.find(params[:id])
+    @attachments = @attachable.attachments
   end
 
   # GET /tasks/new
@@ -77,6 +80,7 @@ class TasksController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])

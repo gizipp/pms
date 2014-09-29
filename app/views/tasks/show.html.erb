@@ -19,6 +19,14 @@
   <span class="label" ><%= @task.due_date %></span>
 </p>
 
+<h2>Attachment</h2>
+<% @attachments.each do |a| %>
+  <p>
+    <%= image_tag a.attachment %>
+  </p>
+<% end %>
+
+
 <h2>Discussion</h2>
 <% @task.comments.each do |comment| %>
   <p>

@@ -3,12 +3,12 @@ class AttachmentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @attachable = find_attachable
+    @attachable = Task.find(params[:task_id])
     @attachments = @attachable.attachments
   end
 
   def new
-    @attachable = find_attachable
+    @attachable = Task.find(params[:task_id])
     @attachment = @attachable.attachments.new
   end
 
