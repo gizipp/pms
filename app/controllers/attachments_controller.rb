@@ -1,19 +1,17 @@
 class AttachmentsController < ApplicationController
   before_action :authenticate_user!
+  before_filter :load_attachable
   load_and_authorize_resource
   
   def index
-    @attachable = find_attachable
     @attachments = @attachable.attachments
   end
 
   def new
-    @attachable = find_attachable
     @attachment = @attachable.attachments.new
   end
 
   def create
-    @attachable = find_attachable
     @attachment = @attachable.attachments.new(attach_params)
     if @attachment.save
       flash[:notice] = "Successfully created attachment."
@@ -24,13 +22,12 @@ class AttachmentsController < ApplicationController
   end
 
   private
-  def find_attachable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-      return $1.classify.constantize.find(value)
-      end
+  def load_attachable
+    if params[:task_id]
+      @attachable = Task.find(params[:task_id])
+      elsif params[:comment_id]
+        @attachable = Comment.find(params[:comment_id])
     end
-    nil
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

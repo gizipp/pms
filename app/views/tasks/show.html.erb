@@ -22,10 +22,18 @@
 <h2>Attachment</h2>
 <% @attachments.each do |a| %>
   <p>
-    <%= image_tag a.attachment %>
+    <%= link_to a.attachment, a.attachment.url %>
   </p>
 <% end %>
 
+<%= form_for [@work, @todo_list, @task, @attachments.build] do |f| %>
+  <div class="field">
+    <%= f.file_field :attachment %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
 
 <h2>Discussion</h2>
 <% @task.comments.each do |comment| %>

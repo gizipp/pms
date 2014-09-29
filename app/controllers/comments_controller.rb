@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @attachable = find_attachable
+    @attachable = Comment.find(params[:id])
     @attachments = @attachable.attachments
   end
 
