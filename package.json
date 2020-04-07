@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "5.0.1",
+    "modernizr": "^3.10.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}

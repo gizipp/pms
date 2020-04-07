@@ -6,8 +6,8 @@
 
     <title>Project Management Software</title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stylesheet_pack_tag    'application' %>
+    <%= javascript_pack_tag    'application' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -26,7 +26,7 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <% if user_signed_in? %>
-          <li class="has-dropdown">       
+          <li class="has-dropdown">
             <%= link_to current_user.username, edit_user_registration_path %>
             <ul class="dropdown">
               <li><%= link_to "Edit profile", edit_user_registration_path %></li>

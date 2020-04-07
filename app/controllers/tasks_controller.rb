@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
-  
+
   # GET /tasks
   # GET /tasks.json
   def index
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to :back, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: :back }
-        UserMailer.delay.notif_task(@user, @task)
+        UserMailer.notif_task(@user, @task).deliver_later
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
