@@ -11,6 +11,10 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :tools do
+  gem 'squasher', '>= 0.6.0'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Use Uglifier as compressor for JavaScript assets
