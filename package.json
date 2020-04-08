@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "@rails/webpacker": "5.0.1",
-    "modernizr": "^3.10.0"
+    "modernizr": "^3.10.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.1",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
